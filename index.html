@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./Assets/CSS/styles.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>Weather Dashboard</header>
+
+    <div class="columns is-vcentered">
+        <div class="column is-one-quarter">
+            <form class="box">
+                <div class="field">
+                    <label class="label">Search for a City:</label>
+                    <div class="control">
+                    <input class="input" type="city" id="city-name" placeholder="San Diego"> 
+                    </div>
+                </div>
+            <button class="button is-link is-focused">Submit</button>
+            </form>
+            <div id="history"></div>
+        </div>
+
+        <div class="column">
+            <section id="current-weather">
+                <h1>City:</h1>
+            </section>
+
+            <br>
+
+            <h2>5-Day Forecast</h2>
+            <br>
+                <div class="columns" id="forecasts">
+                    <div class="column">
+                        1
+                    </div>
+                    <div class="column">
+                        2
+                    </div>
+                    <div class="column">
+                        3
+                    </div>            
+                    <div class="column">
+                        4
+                    </div>            
+                    <div class="column">
+                        5
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="./Assets/JS/app.js"></script>
+</body>
+</html>
