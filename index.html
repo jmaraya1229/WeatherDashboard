@@ -10,13 +10,19 @@
 </head>
 
 <body>
-    <header>Weather Dashboard</header>
+    <section class="hero is-link">
+        <div class="hero-body">
+            <p class="title has-text-centered is-1">
+                Weather Dashboard
+            </p>
+        </div>
+    </section>
 
     <div class="columns is-vcentered">
         <div class="column is-one-quarter">
             <form class="box">
                 <div class="field">
-                    <label class="label">Search for a City:</label>
+                    <label class="label ">Search for a City:</label>
                     <div class="control">
                     <input class="input" type="city" id="city-name" placeholder="San Diego"> 
                     </div>
@@ -27,28 +33,28 @@
         </div>
 
         <div class="column">
-            <section id="current-weather">
+            <div class="box mt-4" id="current-weather">
                 <h1>City:</h1>
-            </section>
+            </div>
 
             <br>
 
             <h2>5-Day Forecast</h2>
             <br>
                 <div class="columns" id="forecasts">
-                    <div class="column">
+                    <div class="column is-2 box">
                         1
                     </div>
-                    <div class="column">
+                    <div class="column is-2 box">
                         2
                     </div>
-                    <div class="column">
+                    <div class="column is-2 box">
                         3
                     </div>            
-                    <div class="column">
+                    <div class="column is-2 box">
                         4
                     </div>            
-                    <div class="column">
+                    <div class="column is-2 box">
                         5
                     </div>
                 </div>
