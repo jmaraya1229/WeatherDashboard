@@ -39,25 +39,22 @@ submitButton.addEventListener("click", function(event) {
 
     getCurrent(cityInput.value)
     .then(result => {
+        let icon = result.weather[0].icon;
+
         document.getElementById("currentCityName").innerHTML = result.name;
+        document.getElementById("currentIcon").src = "http://openweathermap.org/img/w/" + icon + ".png";
     })
 
     getCurrent(cityInput.value)
     .then(result => getOneCall(result.coord.lat, result.coord.lon))
     .then(finalResult => {
+        console.log(finalResult)
         populateCurrentCity(finalResult);
-    })
-
-    getFiveDayForeCast(cityInput.value)
-    .then(result => {
-        // Day 1
-        let icon = result.list[0].weather[0].icon;
-        console.log(icon)
-        document.getElementById("day-one-date").innerHTML = convertUnixToDate(result.list[0].dt);
-        document.getElementById("day-one-icon").src = "http://openweathermap.org/img/w/" + icon + ".png";
-        document.getElementById("day-one-temp").innerHTML = "Temp: " + result.list[0].main.temp + "&deg;F"; 
-        document.getElementById("day-one-wind").innerHTML = "Wind: " + result.list[0].wind.speed + " mph";
-        document.getElementById("day-one-humidity").innerHTML = "Humidity: " + result.list[0].main.humidity + "%";
+        populateForecast("day-one", finalResult, 1)
+        populateForecast("day-two", finalResult, 2)
+        populateForecast("day-three", finalResult, 3)
+        populateForecast("day-four", finalResult, 4)
+        populateForecast("day-five", finalResult, 5)
     })
 
     cities.push(cityInput.value);
@@ -74,6 +71,15 @@ var clearButton = document.getElementById("clear");
 clearButton.addEventListener("click", function() {
     localStorage.clear();
 })
+
+function populateForecast(day_desc, result, index){
+    let icon = result.daily[index].weather[0].icon;
+    document.getElementById(day_desc + "-date").innerHTML = convertUnixToDate(result.daily[index].dt);
+    document.getElementById(day_desc + "-icon").src = "http://openweathermap.org/img/w/" + icon + ".png";
+    document.getElementById(day_desc + "-temp").innerHTML = "Temp: " + result.daily[index].temp.day + "&deg;F"; 
+    document.getElementById(day_desc + "-wind").innerHTML = "Wind: " + result.daily[index].wind_speed + " mph";
+    document.getElementById(day_desc + "-humidity").innerHTML = "Humidity: " + result.daily[index].humidity + "%";
+}
 
 //  function searchApi ()
 async function getCurrent(input) {
@@ -123,13 +129,12 @@ function populateCurrentCity(currentCityValues) {
             document.getElementById("currentUVI").style.color = "white";
             document.getElementById("currentUVI").style.backgroundColor = "green";
         } else if (UVColor >= 6) {
-            UVColor.style.backgroundColor = "red";
+            document.getElementById("currentUVI").style.backgroundColor = "red";
         } else {
-            UVColor.style.backgroundColor = "yellow";
+            document.getElementById("currentUVI").style.backgroundColor = "yellow";
         }
         return UVColor;
     }
-
     document.getElementById("currentDate").innerHTML = humanDateFormat;
     document.getElementById("currentTemp").innerHTML = "Temp: " + currentCityValues.current.temp + "&deg;F";
     document.getElementById("currentWindSp").innerHTML = "Wind: " + currentCityValues.current.wind_speed + " mph";
@@ -155,6 +160,11 @@ cityHistory.addEventListener("click", function() {
                 .then(result => getOneCall(result.coord.lat, result.coord.lon))
                 .then(finalResult => {
                     populateCurrentCity(finalResult);
+                    populateForecast("day-one", finalResult, 1)
+                    populateForecast("day-two", finalResult, 2)
+                    populateForecast("day-three", finalResult, 3)
+                    populateForecast("day-four", finalResult, 4)
+                    populateForecast("day-five", finalResult, 5)
                 })
                 cityHistory.innerHTML = "";
                 renderHistory()
