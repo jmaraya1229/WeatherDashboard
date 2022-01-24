@@ -36,36 +36,67 @@
         </div>
 
         <div class="column mr-5">
-            <div id="currentContainer"></div>
+            <div id="currentContainer">
+                <div class="box">
+                    <h1 id="currentCityName"></h1> 
+                        <div id="currentIcon"></div>
+                    <p id="currentDate"></p>
+                    <p id="currentTemp"></p>
+                    <p id="currentWindSp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentUVI"></p>
+                </div>
+            </div>
 
-            <h2 class="title is-5">5-Day Forecast</h2>
-                <div class="tile is-ancestor" id="forecasts">
-                    <div class="tile is-parent">
-                        <div class="tile is-child box">
-                            1
-                        </div>
-                    </div>
-                    <div class="tile is-parent">
-                        <div class="tile is-child box">
-                            2
-                        </div>
-                    </div>                    
-                    <div class="tile is-parent">
-                        <div class="tile is-child box">
-                            3
-                        </div>
-                    </div>                    
-                    <div class="tile is-parent">
-                        <div class="tile is-child box">
-                            4
-                        </div>
-                    </div>                    
-                    <div class="tile is-parent">
-                        <div class="tile is-child box">
-                            5
-                        </div>
+        <br>
+        <h2 class="title is-5">5-Day Forecast</h2>
+            <div class="tile is-ancestor" id="forecasts">
+                <div class="tile is-parent">
+                    <div class="tile is-child box has-text-white has-background-link" id="day-one">
+                        <p id="day-one-date"></p>
+                        <p id="day-one-icon"></p>
+                        <p id="day-one-temp"></p>
+                        <p id="day-one-wind"></p>
+                        <p id="day-one-humidity"></p>
                     </div>
                 </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child box has-text-white has-background-link" id="day-2">
+                        <p id="day-two-date"></p>
+                        <p id="day-two-icon"></p>
+                        <p id="day-two-temp"></p>
+                        <p id="day-two-wind"></p>
+                        <p id="day-two-humidity"></p>
+                    </div>
+                </div>                    
+                <div class="tile is-parent">
+                    <div class="tile is-child box has-text-white has-background-link" id="day-3">
+                        <p id="day-three-date"></p>
+                        <p id="day-three-icon"></p>
+                        <p id="day-three-temp"></p>
+                        <p id="day-three-wind"></p>
+                        <p id="day-three-humidity"></p>
+                    </div>
+                </div>                    
+                <div class="tile is-parent">
+                    <div class="tile is-child box has-text-white has-background-link" id="day-4">
+                        <p id="day-four-date"></p>
+                        <p id="day-four-icon"></p>
+                        <p id="day-four-temp"></p>
+                        <p id="day-four-wind"></p>
+                        <p id="day-four-humidity"></p>
+                    </div>
+                </div>                    
+                <div class="tile is-parent">
+                    <div class="tile is-child box has-text-white has-background-link" id="day-5">
+                        <p id="day-five-date"></p>
+                        <p id="day-five-icon"></p>
+                        <p id="day-five-temp"></p>
+                        <p id="day-five-wind"></p>
+                        <p id="day-five-humidity"></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./Assets/JS/app.js"></script>

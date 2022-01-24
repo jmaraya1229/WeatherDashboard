@@ -33,7 +33,7 @@ function storeCities() {
  
 var submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", function(event) {
-    event.preventDefault();
+    
     if (cityInput.value === "") {
         return;
     }
@@ -51,6 +51,7 @@ submitButton.addEventListener("click", function(event) {
 
     storeCities();
     renderHistory();
+    event.preventDefault();
 });
 
 init();
@@ -83,23 +84,30 @@ async function getOneCall(lat, lng) {
 
 function populateCurrentCity(currentCityValues) {
     console.log(currentCityValues)
-    const unixTimestamp = currentCityValues.current.dt
-    const milliseconds = unixTimestamp * 1000 
-    const dateObject = new Date(milliseconds)
-    const humanDateFormat = dateObject.toLocaleString() 
-    console.log(humanDateFormat)
-    currentCityContainer.innerHTML = `
+    const unixTimestamp = currentCityValues.current.dt;
+    const milliseconds = unixTimestamp * 1000;
+    const dateObject = new Date(milliseconds);
+    let options = {month:'numeric', day:'numeric', year:'numeric'};
+    const humanDateFormat = dateObject.toLocaleString('en-US', options);
 
-    <div class="card mx-auto mt-5" style="width: 18rem;">
-        <div class="card-body justify-content-center">
-            <h5 class="card-title"> $(humanDateFormat) </h5>
-            <p class="card-text">Temp: $(currentCityValues.current.temp)F</p>
-                <p>Wind: $(currentCityValues.current.wind_speed) MPH</p>
-                <p>Humidity: $(currentCityValues.current.humidity) %</p>
-                <p> UV Index: $(currentCityValues.current.uvi)</p>       
-        </div>
-    </div>
-    
-    `;
+    let UVColor = currentCityValues.current.uvi
+
+    function changeUVColor() {
+        if (UVColor <= 2) {
+            document.getElementById("currentUVI").style.color = "white";
+            document.getElementById("currentUVI").style.backgroundColor = "green";
+        } else if (UVColor >= 6) {
+            UVColor.style.backgroundColor = "red";
+        } else {
+            UVColor.style.backgroundColor = "yellow";
+        }
+        return UVColor;
+    }
+
+    document.getElementById("currentCityName").innerHTML = "San Diego";
+    document.getElementById("currentDate").innerHTML = humanDateFormat;
+    document.getElementById("currentTemp").innerHTML = "Temp:" + currentCityValues.current.temp + "&deg; F";
+    document.getElementById("currentWindSp").innerHTML = "Wind:" + currentCityValues.current.wind_speed + " mph";
+    document.getElementById("currentHumidity").innerHTML = "Humidity: " + currentCityValues.current.humidity + "%";
+    document.getElementById("currentUVI").innerHTML = "UV Index: " + changeUVColor();
 }
-
