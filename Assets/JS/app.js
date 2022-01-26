@@ -81,7 +81,6 @@ function populateForecast(day_desc, result, index){
     document.getElementById(day_desc + "-humidity").innerHTML = "Humidity: " + result.daily[index].humidity + "%";
 }
 
-//  function searchApi ()
 async function getCurrent(input) {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=imperial&appid=${myKey}`
