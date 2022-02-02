@@ -9,8 +9,13 @@ In this web application, the user will be able to textually input a city name in
 * When the user views the future weather coditions for that city, they will be presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 * When the user clicks on a city in the search history, they are again presented with the currentand future conditions for that city. 
 
-## Screenshot
-![screenshot](./Assets/Screenshot.png)
+## Technologies used
+* Openweathermap API
+* Movement.js
+* Bulma (CSS Framework)
+
+## Example
+![screenshot](./Assets/IMAGES/WeatherDashboardGIF.gif)
 
 
 ## Link
